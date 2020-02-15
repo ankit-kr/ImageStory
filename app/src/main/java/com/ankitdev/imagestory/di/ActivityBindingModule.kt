@@ -1,6 +1,10 @@
 package com.ankitdev.imagestory.di
 
+import com.ankitdev.imagestory.di.scope.ActivityScoped
+import com.ankitdev.imagestory.presentation.home.HomeActivity
+import com.ankitdev.imagestory.presentation.splash.SplashActivity
 import dagger.Module
+import dagger.android.ContributesAndroidInjector
 
 /**
  *<h1>ActivityBindingModule class</h1>
@@ -14,4 +18,13 @@ import dagger.Module
  * @version : 1.0
  */
 @Module
-class ActivityBindingModule
+abstract class ActivityBindingModule {
+
+    @ActivityScoped
+    @ContributesAndroidInjector
+    abstract fun splashActivity(): SplashActivity
+
+    @ActivityScoped
+    @ContributesAndroidInjector
+    abstract fun mainActivity(): HomeActivity
+}
