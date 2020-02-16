@@ -2,4 +2,7 @@
 <resources>
     <dimen name="window_margin">20dp</dimen>
     <dimen name="window_margin_standard">8dp</dimen>
+    <dimen name="text_size_content_title">16sp</dimen>
+    <dimen name="text_size_content">14sp</dimen>
+    <dimen name="size_detail_icon">60dp</dimen>
 </resources>

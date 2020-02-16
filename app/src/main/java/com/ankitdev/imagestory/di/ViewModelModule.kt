@@ -2,6 +2,7 @@ package com.ankitdev.imagestory.di
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.ankitdev.imagestory.presentation.detail.DetailViewModel
 import com.ankitdev.imagestory.presentation.home.HomeViewModel
 import com.ankitdev.imagestory.presentation.splash.SplashViewModel
 import dagger.Binds
@@ -56,5 +57,8 @@ abstract class ViewModelModule {
     @ViewModelKey(HomeViewModel::class)
     abstract fun homeViewModel(homeViewModel: HomeViewModel): ViewModel
 
-
+    @Binds
+    @IntoMap
+    @ViewModelKey(DetailViewModel::class)
+    abstract fun detailViewModel(detailViewModel: DetailViewModel): ViewModel
 }

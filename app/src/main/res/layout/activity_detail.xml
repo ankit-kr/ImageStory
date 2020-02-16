@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.ankitdev.imagestory.presentation.detail.DetailViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/black"
+        tools:context=".presentation.detail.DetailActivity">
+
+        <ImageView
+            android:id="@+id/iv_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/app_name" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#8c000000" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/window_margin"
+            android:layout_marginEnd="@dimen/window_margin"
+            android:layout_marginBottom="@dimen/window_margin"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/window_margin_standard"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/ll_like_views"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.imageData.title??``}"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/text_size_content_title"
+                tools:text="Title" />
+
+            <TextView
+                android:id="@+id/tv_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.imageData.description??``}"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/text_size_content"
+                tools:text="description" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_like_views"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/window_margin"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <LinearLayout
+                android:layout_width="@dimen/size_detail_icon"
+                android:layout_height="@dimen/size_detail_icon"
+                android:layout_margin="@dimen/window_margin_standard"
+                android:orientation="vertical"
+                tools:ignore="UseCompoundDrawables">
+
+                <ImageView
+                    android:id="@+id/iv_like"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:contentDescription="@string/likes"
+                    android:src="@drawable/ic_favorite_white_24dp" />
+
+                <TextView
+                    android:id="@+id/tv_like_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/window_margin_standard"
+                    android:maxLines="1"
+                    android:text="@{String.valueOf(viewModel.imageData.favoriteCount)??``}"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/text_size_content"
+                    tools:text="description" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="@dimen/size_detail_icon"
+                android:layout_height="@dimen/size_detail_icon"
+                android:layout_margin="@dimen/window_margin_standard"
+                android:orientation="vertical"
+                tools:ignore="UseCompoundDrawables">
+
+                <ImageView
+                    android:id="@+id/iv_comment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:contentDescription="@string/comments_count"
+                    android:src="@drawable/ic_mode_comment_white_24dp" />
+
+                <TextView
+                    android:id="@+id/tv_comment_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/window_margin_standard"
+                    android:maxLines="1"
+                    android:text="@{String.valueOf(viewModel.imageData.commentCount)??``}"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/text_size_content"
+                    tools:text="description" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="@dimen/size_detail_icon"
+                android:layout_height="@dimen/size_detail_icon"
+                android:layout_margin="@dimen/window_margin_standard"
+                android:orientation="vertical"
+                tools:ignore="UseCompoundDrawables">
+
+                <ImageView
+                    android:id="@+id/iv_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:contentDescription="@string/views_count"
+                    android:src="@drawable/ic_remove_red_eye_white_24dp" />
+
+                <TextView
+                    android:id="@+id/tv_view_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/window_margin_standard"
+                    android:maxLines="1"
+                    android:text="@{String.valueOf(viewModel.imageData.views)??``}"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/text_size_content"
+                    tools:text="description" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,6 +1,7 @@
 package com.ankitdev.imagestory.di
 
 import com.ankitdev.imagestory.di.scope.ActivityScoped
+import com.ankitdev.imagestory.presentation.detail.DetailActivity
 import com.ankitdev.imagestory.presentation.home.HomeActivity
 import com.ankitdev.imagestory.presentation.home.HomeUtilModule
 import com.ankitdev.imagestory.presentation.splash.SplashActivity
@@ -28,4 +29,8 @@ abstract class ActivityBindingModule {
     @ActivityScoped
     @ContributesAndroidInjector(modules = [HomeUtilModule::class])
     abstract fun homeActivity(): HomeActivity
+
+    @ActivityScoped
+    @ContributesAndroidInjector
+    abstract fun deatilActivity(): DetailActivity
 }

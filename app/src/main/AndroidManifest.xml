@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ankitdev.imagestory">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name=".ImageStoryApplication"
@@ -12,6 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".presentation.detail.DetailActivity"
+            android:screenOrientation="portrait"
+            />
         <activity
             android:name=".presentation.splash.SplashActivity"
             android:screenOrientation="portrait"

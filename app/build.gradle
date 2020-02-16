@@ -26,7 +26,7 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
-        debug{
+        debug {
             buildConfigField("String", "ACCESS_TOKEN", "\"bearer 87619e78c3fd31e871708580290d84811123df3d\"")
             buildConfigField("String", "BASE_URL", "\"https://api.imgur.com\"")
             buildConfigField("String", "CLIENT_ID", "\"Client-ID 5d574779690374d\"")
@@ -34,6 +34,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
 
         }
+    }
+    androidExtensions {
+        experimental = true
     }
 
     compileOptions {

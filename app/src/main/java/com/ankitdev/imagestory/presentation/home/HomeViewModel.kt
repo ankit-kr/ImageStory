@@ -3,10 +3,14 @@ package com.ankitdev.imagestory.presentation.home
 import android.util.Log
 import androidx.databinding.ObservableArrayList
 import androidx.databinding.ObservableBoolean
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.ankitdev.imagestory.data.model.ImageData
 import com.ankitdev.imagestory.data.model.ImageDataResponse
 import com.ankitdev.imagestory.domain.GetImageUseCase
 import com.ankitdev.imagestory.presentation.base.BaseViewModel
+import com.ankitdev.imagestory.presentation.common.Constants
+import com.ankitdev.imagestory.presentation.common.Event
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
@@ -32,6 +36,17 @@ class HomeViewModel @Inject constructor(
     val loading = ObservableBoolean(true)
 
     private lateinit var imageDataList: ObservableArrayList<ImageData>
+
+    private val _routeEvent = MutableLiveData<Event<Pair<String, *>>>()
+    val routeEvent: LiveData<Event<Pair<String, *>>> = _routeEvent
+
+    /**
+     * Post route string to _routeEvent MutableLiveData.
+     * @param pair Pair<String,*>
+     */
+    private fun postRouteEvent(pair: Pair<String, *>) {
+        _routeEvent.postValue(Event(pair))
+    }
 
     /**
      * Setter loading.
@@ -80,6 +95,6 @@ class HomeViewModel @Inject constructor(
      *
      */
     fun onImageItemClick(imageData: ImageData) {
-
+        postRouteEvent(Pair(Constants.DETAIL_PAGE, imageData))
     }
 }
