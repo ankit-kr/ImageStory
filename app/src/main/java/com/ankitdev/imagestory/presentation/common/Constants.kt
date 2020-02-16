@@ -14,6 +14,7 @@ package com.ankitdev.imagestory.presentation.common
 object Constants{
 
 
+    const val SPAN_COUNT = 2
     const val HOME_PAGE ="home_page"
     const val SPLASH_DELAY_MILLIS = 1000L
 

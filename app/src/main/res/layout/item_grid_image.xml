@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="imageData"
+            type="com.ankitdev.imagestory.data.model.ImageData" />
+    </data>
+
+    <com.ankitdev.imagestory.presentation.common.SquareFrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/window_margin_standard"
+        android:background="?android:attr/selectableItemBackground"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/splash_logo" />
+    </com.ankitdev.imagestory.presentation.common.SquareFrameLayout>
+</layout>

@@ -1,6 +1,11 @@
 package com.ankitdev.imagestory.di
 
+import com.ankitdev.imagestory.domain.GetImageUseCase
+import com.ankitdev.imagestory.domain.GetImageUseCaseImpl
+import com.ankitdev.imagestory.domain.ImagesRepository
 import dagger.Module
+import dagger.Provides
+import javax.inject.Singleton
 
 /**
  *<h1>UseCaseModule class</h1>
@@ -12,4 +17,11 @@ import dagger.Module
  * @version : 1.0
  */
 @Module
-class UseCaseModule
+class UseCaseModule {
+
+    @Singleton
+    @Provides
+    fun provideImageUseCase(imagesRepository: ImagesRepository): GetImageUseCase {
+        return GetImageUseCaseImpl(imagesRepository)
+    }
+}
