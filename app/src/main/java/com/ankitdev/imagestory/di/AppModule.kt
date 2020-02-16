@@ -1,6 +1,10 @@
 package com.ankitdev.imagestory.di
 
+import android.content.Context
+import com.ankitdev.imagestory.ImageStoryApplication
+import dagger.Binds
 import dagger.Module
+import javax.inject.Singleton
 
 /**
  *<h1>AppModule class</h1>
@@ -12,6 +16,9 @@ import dagger.Module
  * @version : 1.0
  */
 @Module
-class AppModule {
+abstract class AppModule {
 
+    @Singleton
+    @Binds
+    abstract fun bindContext(imageStoryApplication: ImageStoryApplication): Context
 }

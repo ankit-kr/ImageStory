@@ -4,4 +4,6 @@
     <string name="comments">Comments</string>
     <string name="comments_count">Comment count</string>
     <string name="views_count">View Count</string>
+    <string name="story_mode">Story Mode</string>
+    <string name="empty_image_list">Image List is Empty.</string>
 </resources>

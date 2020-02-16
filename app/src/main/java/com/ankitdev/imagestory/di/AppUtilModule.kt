@@ -1,6 +1,10 @@
 package com.ankitdev.imagestory.di
 
+import androidx.databinding.ObservableArrayList
+import com.ankitdev.imagestory.data.model.ImageData
 import dagger.Module
+import dagger.Provides
+import javax.inject.Singleton
 
 /**
  *<h1>AppUtilModule class</h1>
@@ -14,4 +18,9 @@ import dagger.Module
 @Module
 class AppUtilModule {
 
+    @Provides
+    @Singleton
+    fun provideImageData(): ObservableArrayList<ImageData> {
+        return ObservableArrayList()
+    }
 }

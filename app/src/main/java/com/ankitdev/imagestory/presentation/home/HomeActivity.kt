@@ -2,6 +2,10 @@ package com.ankitdev.imagestory.presentation.home
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ObservableArrayList
 import androidx.lifecycle.Observer
@@ -16,10 +20,22 @@ import com.ankitdev.imagestory.presentation.base.BaseActivity
 import com.ankitdev.imagestory.presentation.common.Constants
 import com.ankitdev.imagestory.presentation.common.Constants.DETAIL_PAGE
 import com.ankitdev.imagestory.presentation.common.Constants.IMAGE_DATA
+import com.ankitdev.imagestory.presentation.common.Constants.STORY_MODE_PAGE
 import com.ankitdev.imagestory.presentation.detail.DetailActivity
 import com.ankitdev.imagestory.presentation.home.adapter.ImageAdapter
+import com.ankitdev.imagestory.presentation.storyMode.StoryModeActivity
 import javax.inject.Inject
 
+/**
+ *<h1>HomeActivity class</h1>
+
+ *<p>Shows story view.</p>
+
+ * @author : Ankit
+ * @since : 16 Feb 2020
+ * @version : 1.0
+ *
+ */
 class HomeActivity : BaseActivity() {
 
     @Inject
@@ -54,8 +70,30 @@ class HomeActivity : BaseActivity() {
                     if (data != null)
                         launchDetailScreen(data as ImageData)
                 }
+                STORY_MODE_PAGE -> {
+                    launchStoryModeScreen()
+                }
+                Constants.TOAST_MESSAGE -> {
+                    Toast.makeText(this, it.getContent().second.toString(), Toast.LENGTH_SHORT)
+                        .show()
+                }
             }
         })
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        val inflater: MenuInflater = MenuInflater(this)
+        inflater.inflate(R.menu.home_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.action_story_mode -> {
+                viewModel.onStoryModeButtonClicked()
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     /**
@@ -64,6 +102,16 @@ class HomeActivity : BaseActivity() {
     private fun launchDetailScreen(imageData: ImageData) {
         val intent = Intent(this, DetailActivity::class.java)
         intent.putExtra(IMAGE_DATA, imageData)
+        intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT)
+        startActivity(intent)
+    }
+
+    /**
+     * Launch detail screen.
+     */
+    private fun launchStoryModeScreen() {
+        val intent = Intent(this, StoryModeActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT)
         startActivity(intent)
     }
 

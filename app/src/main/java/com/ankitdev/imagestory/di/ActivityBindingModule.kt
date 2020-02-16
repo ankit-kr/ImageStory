@@ -5,6 +5,9 @@ import com.ankitdev.imagestory.presentation.detail.DetailActivity
 import com.ankitdev.imagestory.presentation.home.HomeActivity
 import com.ankitdev.imagestory.presentation.home.HomeUtilModule
 import com.ankitdev.imagestory.presentation.splash.SplashActivity
+import com.ankitdev.imagestory.presentation.storyMode.StoryModeActivity
+import com.ankitdev.imagestory.presentation.storyMode.StoryModeUtilModule
+import com.ankitdev.imagestory.presentation.storyMode.StoryModeViewModel
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -33,4 +36,8 @@ abstract class ActivityBindingModule {
     @ActivityScoped
     @ContributesAndroidInjector
     abstract fun deatilActivity(): DetailActivity
+
+    @ActivityScoped
+    @ContributesAndroidInjector(modules = [StoryModeUtilModule::class])
+    abstract fun storyModeActivity(): StoryModeActivity
 }

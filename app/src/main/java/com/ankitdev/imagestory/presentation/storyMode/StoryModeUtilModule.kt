@@ -1,9 +1,9 @@
-package com.ankitdev.imagestory.presentation.home
+package com.ankitdev.imagestory.presentation.storyMode
 
 import androidx.databinding.ObservableArrayList
 import com.ankitdev.imagestory.data.model.ImageData
 import com.ankitdev.imagestory.di.scope.ActivityScoped
-import com.ankitdev.imagestory.presentation.home.adapter.ImageAdapter
+import com.ankitdev.imagestory.presentation.storyMode.adapter.StoryModeAdapter
 import dagger.Module
 import dagger.Provides
 
@@ -18,10 +18,10 @@ import dagger.Provides
  *
  */
 @Module
-class HomeUtilModule {
+class StoryModeUtilModule {
     @Provides
     @ActivityScoped
-    fun provideImageAdapter(imageDataList: ObservableArrayList<ImageData>): ImageAdapter {
-        return ImageAdapter(imageDataList)
+    fun provideStoryModeAdapter(imageDataList: ObservableArrayList<ImageData>): StoryModeAdapter {
+        return StoryModeAdapter(imageDataList)
     }
 }

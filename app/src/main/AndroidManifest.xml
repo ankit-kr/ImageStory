@@ -12,9 +12,13 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".presentation.detail.DetailActivity"
+        <activity
+            android:name=".presentation.storyMode.StoryModeActivity"
             android:screenOrientation="portrait"
-            />
+            android:theme="@style/FullScreenStoryTheme" />
+        <activity
+            android:name=".presentation.detail.DetailActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".presentation.splash.SplashActivity"
             android:screenOrientation="portrait"

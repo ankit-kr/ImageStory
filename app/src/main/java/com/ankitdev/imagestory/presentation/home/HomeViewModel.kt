@@ -1,10 +1,12 @@
 package com.ankitdev.imagestory.presentation.home
 
+import android.content.Context
 import android.util.Log
 import androidx.databinding.ObservableArrayList
 import androidx.databinding.ObservableBoolean
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.ankitdev.imagestory.R
 import com.ankitdev.imagestory.data.model.ImageData
 import com.ankitdev.imagestory.data.model.ImageDataResponse
 import com.ankitdev.imagestory.domain.GetImageUseCase
@@ -24,10 +26,11 @@ import javax.inject.Inject
  * @author : Ankit
  * @since : 16 Feb 2020
  * @version : 1.0
- * @company : 3Embed Software Technologies Pvt. Ltd.
+ *
  */
 class HomeViewModel @Inject constructor(
-    private val getImageUseCase: GetImageUseCase
+    private val getImageUseCase: GetImageUseCase,
+    private val context: Context
 ) : BaseViewModel() {
     companion object {
         private val TAG = HomeViewModel::class.java.simpleName
@@ -96,5 +99,16 @@ class HomeViewModel @Inject constructor(
      */
     fun onImageItemClick(imageData: ImageData) {
         postRouteEvent(Pair(Constants.DETAIL_PAGE, imageData))
+    }
+
+    /**
+     * Called on story mode option clicked.
+     */
+    fun onStoryModeButtonClicked() {
+        if (!imageDataList.isEmpty()) {
+            postRouteEvent(Pair(Constants.STORY_MODE_PAGE, ""))
+        }else{
+            postRouteEvent(Pair(Constants.TOAST_MESSAGE, context.getString(R.string.empty_image_list)))
+        }
     }
 }

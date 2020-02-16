@@ -14,7 +14,7 @@ import io.reactivex.Single
  * @author : Ankit
  * @since : 16 Feb 2020
  * @version : 1.0
- * @company : 3Embed Software Technologies Pvt. Ltd.
+ *
  */
 class ImageRepositoryImpl(private val imageService: ImageService) : ImagesRepository {
 
